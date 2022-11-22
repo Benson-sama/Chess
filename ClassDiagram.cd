@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Chess.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAIAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Chess.Model.ChessPieces.ChessPiece">
+    <Position X="10.75" Y="9.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Model\ChessPieces\ChessPiece.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.Model.ChessPieces.Rook">
+    <Position X="6.75" Y="11.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ChessPieces\Rook.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.Model.ChessPieces.Bishop">
+    <Position X="10.75" Y="11.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ChessPieces\Bishop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.Model.ChessPieces.King">
+    <Position X="14.75" Y="11.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ChessPieces\King.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.Model.ChessPieces.Knight">
+    <Position X="6.75" Y="13.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ChessPieces\Knight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.Model.ChessPieces.Pawn">
+    <Position X="14.75" Y="13.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ChessPieces\Pawn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.Model.ChessBoard">
+    <Position X="15.25" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABICAAAQAQAAABEAAIAAAACAAAEAAAAAAEAA=</HashCode>
+      <FileName>Model\ChessBoard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.ChessBoardParameters">
+    <Position X="7.25" Y="3.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAABAAQAQAAAAEAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Model\ChessBoardParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.App">
+    <Position X="0.5" Y="2.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.Model.ChessPieces.Queen">
+    <Position X="10.75" Y="13.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ChessPieces\Queen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.Model.Field">
+    <Position X="19.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAgAAAAIAIAACAAAAAAAAiA=</HashCode>
+      <FileName>Model\Field.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Chess.ViewModel.FieldVM">
+    <Position X="9.75" Y="18.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAIAAAACAAAAgAAgAI=</HashCode>
+      <FileName>ViewModel\FieldVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Chess.ViewModel.ChessBoardVM">
+    <Position X="0.5" Y="20.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAgEAAAAAgEAAAIAAAAAAAgAA=</HashCode>
+      <FileName>ViewModel\ChessBoardVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chess.View.ChessPieceToImageConverter">
+    <Position X="0.5" Y="4.5" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\ChessPieceToImageConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Chess.ViewModel.ChessPieceVisitor">
+    <Position X="8" Y="8.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ChessPieceVisitor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Chess.View.FieldBrushConverter">
+    <Position X="0.5" Y="6.25" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\FieldBrushConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Chess.ChessGame">
+    <Position X="10.5" Y="3.5" Width="4" />
+    <AssociationLine Name="Status" Type="Chess.Model.ChessGameStatus">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.164" Y="0.62" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="FirstPlayer" Type="Chess.Model.Player" FixedFromPoint="true">
+      <Path>
+        <Point X="11" Y="3.5" />
+        <Point X="11" Y="2.507" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.004" Y="0.133" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="SecondPlayer" Type="Chess.Model.Player" FixedFromPoint="true">
+      <Path>
+        <Point X="12.375" Y="3.5" />
+        <Point X="12.375" Y="2.507" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.089" Y="0.487" Height="0.182" Width="1.024" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Board" Type="Chess.Model.ChessBoard" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.25" Y="3.5" />
+        <Point X="14.25" Y="3.062" />
+        <Point X="15.25" Y="3.062" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="availableChessPieces" Type="Chess.Model.ChessPieces.ChessPiece">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.151" Y="0.883" Height="0.182" Width="2.555" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAQJAAAEgJAAgAgAAAAAAEIAAAAAAIAAAEACACAABQA=</HashCode>
+      <FileName>Model\ChessGame.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Status" />
+      <Property Name="FirstPlayer" />
+      <Property Name="SecondPlayer" />
+      <Property Name="Board" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="availableChessPieces" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Chess.Model.Player">
+    <Position X="10.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Model\Player.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FacingDirection" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Chess.RuleBook">
+    <Position X="15.25" Y="4.75" Width="7.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAEAAQAAAAAAIAQgAAACAACAAAAQAAAAAA=</HashCode>
+      <FileName>Model\RuleBook.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Chess.ViewModel.ChessGameVM">
+    <Position X="0.5" Y="15.5" Width="5.25" />
+    <AssociationLine Name="selections" Type="Chess.ViewModel.FieldVM" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="16.795" />
+        <Point X="12.75" Y="16.795" />
+        <Point X="12.75" Y="18.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.477" Y="1.725" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="highlightedFields" Type="Chess.ViewModel.FieldVM" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="17.089" />
+        <Point X="11.75" Y="17.089" />
+        <Point X="11.75" Y="18.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.195" Y="0.964" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="BeatenWhiteChessPieces" Type="Chess.ViewModel.ChessPieceVM" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="16.375" />
+        <Point X="14" Y="16.375" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.14" Y="0.154" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="BeatenBlackChessPieces" Type="Chess.ViewModel.ChessPieceVM" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="5.75" Y="15.875" />
+        <Point X="14" Y="15.875" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.112" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ChessBoardVM" Type="Chess.ViewModel.ChessBoardVM" FixedFromPoint="true">
+      <Path>
+        <Point X="2.938" Y="18.594" />
+        <Point X="2.938" Y="20.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.338" Y="0.122" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Status" Type="Chess.ViewModel.ChessGameStatusVM" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="17.872" />
+        <Point X="8.562" Y="17.872" />
+        <Point X="8.562" Y="20.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.183" Y="1.331" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="status" Type="Chess.ViewModel.ChessGameStatusVM" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="18.264" />
+        <Point X="7.625" Y="18.264" />
+        <Point X="7.625" Y="20.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.172" Y="1.31" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>GAQAAAAEAEAAEARAACAAAAAIAAAgKACAAAAAAAAAGCA=</HashCode>
+      <FileName>ViewModel\ChessGameVM.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="chessBoardVM" />
+      <Field Name="status" />
+      <Property Name="ChessBoardVM" />
+      <Property Name="Status" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="selections" />
+      <Field Name="highlightedFields" />
+      <Property Name="BeatenWhiteChessPieces" />
+      <Property Name="BeatenBlackChessPieces" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Chess.ViewModel.ChessPieceVM">
+    <Position X="14" Y="15.5" Width="3.75" />
+    <AssociationLine Name="fieldVM" Type="Chess.ViewModel.FieldVM" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.812" Y="17.959" />
+        <Point X="15.812" Y="20.028" />
+        <Point X="13.5" Y="20.028" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.998" Y="0.172" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="FieldVM" Type="Chess.ViewModel.FieldVM" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.813" Y="17.959" />
+        <Point X="16.813" Y="20.851" />
+        <Point X="13.5" Y="20.851" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAEEAAABAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ChessPieceVM.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="fieldVM" />
+      <Property Name="FieldVM" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Chess.ViewModel.ChessGameStatusVM">
+    <Position X="5.5" Y="20.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ChessGameStatusVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Chess.Model.ChessPieces.IChessPieceVisitor">
+    <Position X="5.75" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ChessPieces\IChessPieceVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Chess.Model.ChessGameStatus">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAQAAAgACAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Model\ChessGameStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Chess.Model.Direction">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAABAAQ=</HashCode>
+      <FileName>Model\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

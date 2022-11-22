@@ -1,0 +1,365 @@
+﻿<Window x:Class="Chess.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chess.View"
+        mc:Ignorable="d"
+        Title="Chess © 2022 Benjamin BOGNER" Height="800" Width="1050" MinHeight="400" MinWidth="400"
+        WindowStartupLocation="CenterScreen" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+        Icon=".\Images\Chess.png">
+    <Window.Resources>
+        <local:ChessPieceToImageConverter x:Key="chessPieceToImageConverter"/>
+        <local:FieldBrushConverter x:Key="fieldBrushConverter"/>
+        <local:ChessGameStatusConverter x:Key="chessGameStatusConverter"/>
+        <local:ChessGameStatusToBackgroundConverter x:Key="chessGameStatusToBackgroundConverter"/>
+        <local:ChessGameStatusToTextColorConverter x:Key="chessGameStatusToTextColorConverter"/>
+        <Style x:Key="rowLabelStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="0.25"/>
+            <Setter Property="Height" Value="0.4"/>
+            <Setter Property="Width" Value="0.4"/>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="columnLabelStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="0.25"/>
+            <Setter Property="Height" Value="0.4"/>
+            <Setter Property="Width" Value="0.4"/>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <!--ChessBoard with labels and beaten black and white chess pieces.-->
+            <Viewbox>
+                <Grid Grid.Column="0" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <!--Beaten black chess pieces area.-->
+                        <Border Grid.Row="0" Background="Gray" Width="0.9" Height="3.6" Margin="0.25 0.3 0.25 0.25"
+                                HorizontalAlignment="Right" CornerRadius="0.05">
+                            <ItemsControl x:Name="beatenBlackChessPieces" ItemsSource="{Binding}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Vertical" MaxHeight="3.6"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding ChessPiece, Converter={StaticResource chessPieceToImageConverter}}"
+                                           Height="0.4" Width="0.4" IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality"
+                                           Margin="0.025">
+                                        </Image>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Border>
+                        <!--Beaten white chess pieces area.-->
+                        <Border Grid.Row="1" Background="Gray" Width="0.9" Height="3.6" Margin="0.25 0.25 0.25 0.3"
+                                HorizontalAlignment="Right" CornerRadius="0.05">
+                            <ItemsControl x:Name="beatenWhiteChessPieces" ItemsSource="{Binding}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Vertical" MaxHeight="3.6"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding ChessPiece, Converter={StaticResource chessPieceToImageConverter}}"
+                                           Height="0.4" Width="0.4" IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality"
+                                           Margin="0.025">
+                                        </Image>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Border>
+                    </Grid>
+                    <!--Column and row labels docked to the board.-->
+                    <DockPanel Grid.Column="1" LastChildFill="False">
+                        <!--Left row label-->
+                        <ItemsControl Height="{Binding Height}" Width="0.5" DockPanel.Dock="Left" ItemsSource="{Binding RowLabels}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="1">
+                                        <TextBlock Text="{Binding}" Style="{StaticResource rowLabelStyle}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <!--Right row label-->
+                        <ItemsControl Height="{Binding Height}" Width="0.5" DockPanel.Dock="Right" ItemsSource="{Binding RowLabels}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="1">
+                                        <TextBlock Text="{Binding}" Style="{StaticResource rowLabelStyle}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <!--Top column label-->
+                        <ItemsControl Width="{Binding Width}" Height="0.5" DockPanel.Dock="Top" ItemsSource="{Binding ColumnLabels}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="1">
+                                        <TextBlock Text="{Binding}" Style="{StaticResource columnLabelStyle}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <!--Bottom column label-->
+                        <ItemsControl Width="{Binding Width}" Height="0.5" DockPanel.Dock="Bottom" ItemsSource="{Binding ColumnLabels}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="1">
+                                        <TextBlock Text="{Binding}" Style="{StaticResource columnLabelStyle}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <!--ChessBoard with chess pieces.-->
+                        <Border Background="LightGray">
+                            <Grid>
+                                <!--Chessboard-->
+                                <ItemsControl HorizontalAlignment="Left" ItemsSource="{Binding Fields}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <Canvas Margin="0.1" Width="{Binding Width}" Height="{Binding Height}"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemContainerStyle>
+                                        <Style TargetType="ContentPresenter">
+                                            <Setter Property="Width" Value="1"/>
+                                            <Setter Property="Height" Value="1"/>
+                                            <Setter Property="Canvas.Left" Value="{Binding Field.Left}"/>
+                                            <Setter Property="Canvas.Bottom" Value="{Binding Field.Top}"/>
+                                        </Style>
+                                    </ItemsControl.ItemContainerStyle>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="{Binding Field, Converter={StaticResource fieldBrushConverter}, Mode=OneTime}">
+                                                <Grid>
+                                                    <!--King in danger animation.-->
+                                                    <Border Background="Transparent">
+                                                        <Border.Style>
+                                                            <Style>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding Danger}" Value="True">
+                                                                        <DataTrigger.EnterActions>
+                                                                            <BeginStoryboard>
+                                                                                <Storyboard>
+                                                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color"
+                                                                                                To="Red" AutoReverse="True" RepeatBehavior="Forever"
+                                                                                                Duration="0:0:0.75"/>
+                                                                                </Storyboard>
+                                                                            </BeginStoryboard>
+                                                                        </DataTrigger.EnterActions>
+                                                                        <DataTrigger.ExitActions>
+                                                                            <BeginStoryboard>
+                                                                                <Storyboard>
+                                                                                    <ColorAnimation Storyboard.TargetProperty="Background.Color"
+                                                                                                To="Transparent" Duration="0:0:0.25"/>
+                                                                                </Storyboard>
+                                                                            </BeginStoryboard>
+                                                                        </DataTrigger.ExitActions>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Border.Style>
+                                                    </Border>
+                                                    <!--Possible moves.-->
+                                                    <Border x:Name="border" Background="Pink" Margin="0.075" CornerRadius="0.1"
+                                                        Opacity="0">
+                                                        <Border.Style>
+                                                            <Style>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding Highlighted}" Value="True">
+                                                                        <DataTrigger.EnterActions>
+                                                                            <BeginStoryboard>
+                                                                                <Storyboard>
+                                                                                    <DoubleAnimation Duration="0:0:0:0.25" To="1"
+                                                                                                 Storyboard.TargetProperty="Opacity"/>
+                                                                                </Storyboard>
+                                                                            </BeginStoryboard>
+                                                                        </DataTrigger.EnterActions>
+                                                                        <DataTrigger.ExitActions>
+                                                                            <BeginStoryboard>
+                                                                                <Storyboard>
+                                                                                    <DoubleAnimation Duration="0:0:0:0.25" To="0"
+                                                                                                 Storyboard.TargetProperty="Opacity"/>
+                                                                                </Storyboard>
+                                                                            </BeginStoryboard>
+                                                                        </DataTrigger.ExitActions>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Border.Style>
+                                                    </Border>
+                                                    <!--Selected field-->
+                                                    <Border Background="DeepPink" Margin="0.075" CornerRadius="0.1"
+                                                        Opacity="{Binding Selected}"/>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <!--Chess pieces-->
+                                <ItemsControl HorizontalAlignment="Left" ItemsSource="{Binding PlacedPieces}">
+                                    <ItemsControl.Resources>
+                                        <RelativeSource x:Key="itemsControl" Mode="FindAncestor" AncestorType="{x:Type ContentPresenter}"/>
+                                    </ItemsControl.Resources>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <Canvas Background="Transparent" Margin="0.1" Width="{Binding Width}" Height="{Binding Height}" MouseDown="Canvas_MouseDown"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemContainerStyle>
+                                        <Style TargetType="ContentPresenter">
+                                            <Setter Property="Width" Value="1"/>
+                                            <Setter Property="Height" Value="1"/>
+                                            <!--Setting the Binding Mode to OneTime instead of OneWay results in smooth-->
+                                            <!--movements when moving (not rewinding), but also creates a bug where the view-->
+                                            <!--does not display the positions correctly when loading a state or rewinding a lot of moves.-->
+                                            <Setter Property="Canvas.Left" Value="{Binding FieldVM.Field.Left, Mode=OneWay}"/>
+                                            <Setter Property="Canvas.Bottom" Value="{Binding FieldVM.Field.Top, Mode=OneWay}"/>
+                                        </Style>
+                                    </ItemsControl.ItemContainerStyle>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding ChessPiece, Converter={StaticResource chessPieceToImageConverter}}"
+                                               Height="0.8" Width="0.8" IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality">
+                                                <Image.Triggers>
+                                                    <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation
+                                                                Duration="0:0:0:0.5" To="{Binding FieldVM.Field.Top, NotifyOnTargetUpdated=True}"
+                                                                Storyboard.Target="{Binding RelativeSource={StaticResource itemsControl}}"
+                                                                Storyboard.TargetProperty="(Canvas.Bottom)" DecelerationRatio="1"/>
+                                                                <DoubleAnimation
+                                                                 Duration="0:0:0:0.5" To="{Binding FieldVM.Field.Left, NotifyOnTargetUpdated=True}"
+                                                                 Storyboard.Target="{Binding RelativeSource={StaticResource itemsControl}}"
+                                                                 Storyboard.TargetProperty="(Canvas.Left)" DecelerationRatio="1"/>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </EventTrigger>
+                                                </Image.Triggers>
+                                            </Image>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                        </Border>
+                    </DockPanel>
+                </Grid>
+            </Viewbox>
+            <!--Move List-->
+            <Border Grid.Column="1" Grid.Row="0" Background="Gray" Margin="10 40 50 40" CornerRadius="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Background="#FF303030" CornerRadius="10 10 0 0">
+                        <Label Content="Move List" Foreground="White" FontSize="24" Margin="10"
+                               FontFamily="Segoe UI Semibold"/>
+                    </Border>
+                    <ScrollViewer Grid.Row="1">
+                        <StackPanel>
+                            <ItemsControl x:Name="moveList" ItemsSource="{Binding}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="0 2 0 0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="60"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Content="{Binding}" Grid.Column="0"/>
+                                            <Button Content="Rewind" Width="50" Grid.Column="1"
+                                                    HorizontalAlignment="Center" Background="White"
+                                                    Click="RewindButton_Click"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ScrollViewer>
+                    <Border Grid.Row="2" Background="#FF303030" CornerRadius="0 0 10 10">
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Content="Save" Background="White" BorderBrush="White"
+                                Margin="10 10 5 10" Click="SaveButton_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button Grid.Column="1" Content="Load" Background="White" BorderBrush="White"
+                                Margin="5 10 10 10" Click="LoadButton_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+        <!--Player Turn Indicator and New Game Button-->
+        <Border x:Name="gameStatusBorder" Grid.Row="1" BorderBrush="Black" BorderThickness="0 3 0 0"
+                Background="{Binding Status, Converter={StaticResource chessGameStatusToBackgroundConverter}}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Foreground="{Binding Status, Converter={StaticResource chessGameStatusToTextColorConverter}}" FontSize="20" Margin="10 0 0 0"
+                   Content="{Binding Status, Converter={StaticResource chessGameStatusConverter}}"/>
+                <Button Grid.Column="1" Content="New Game" Width="100" Height="25" Margin="5"
+                        Click="NewGameButton_Click"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
