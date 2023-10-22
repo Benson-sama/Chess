@@ -18,10 +18,7 @@ namespace Chess.Model.ChessPieces
         /// <summary>
         /// Initialises a new instance of the <see cref="KingsRetriever"/> class.
         /// </summary>
-        public KingsRetriever()
-        {
-            this.Kings = new List<King>();
-        }
+        public KingsRetriever() => Kings = new List<King>();
 
         /// <summary>
         /// Gets the list of <see cref="King"/> objects.
@@ -33,10 +30,7 @@ namespace Chess.Model.ChessPieces
         /// Adds the visited <see cref="King"/> to the internal list.
         /// </summary>
         /// <param name="king">The visited <see cref="King"/>.</param>
-        public void Visit(King king)
-        {
-            this.Kings.Add(king);
-        }
+        public void Visit(King king) => Kings.Add(king);
 
         /// <summary>
         /// Placeholder method for visiting a <see cref="Queen"/>.

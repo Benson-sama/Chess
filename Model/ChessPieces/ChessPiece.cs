@@ -16,20 +16,13 @@ namespace Chess.Model.ChessPieces
         /// Initialises a new instance of the <see cref="ChessPiece"/> class.
         /// </summary>
         /// <param name="player">The <see cref="Model.Player"/> for this <see cref="ChessPiece"/>.</param>
-        public ChessPiece(Player player)
-        {
-            this.Player = player;
-        }
+        public ChessPiece(Player player) => Player = player;
 
         /// <summary>
         /// Gets or sets the <see cref="Model.Player"/> of the <see cref="ChessPiece"/>.
         /// </summary>
         /// <value>The <see cref="Model.Player"/> of the <see cref="ChessPiece"/>.</value>
-        public Player Player
-        {
-            get;
-            set;
-        }
+        public Player Player { get; set; }
 
         /// <summary>
         /// Accepts a visitor in order to get something done.

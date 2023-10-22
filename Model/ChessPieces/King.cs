@@ -25,8 +25,6 @@ namespace Chess.Model.ChessPieces
         /// </summary>
         /// <param name="chessPieceVisitor">The <see cref="IChessPieceVisitor"/> to be visited.</param>
         public override void Accept(IChessPieceVisitor chessPieceVisitor)
-        {
-            chessPieceVisitor.Visit(this);
-        }
+            => chessPieceVisitor.Visit(this);
     }
 }
