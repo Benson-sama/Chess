@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Chess.png" />
+    <None Remove="Images\ChessPieces\PNG\Bishop-black.png" />
+    <None Remove="Images\ChessPieces\PNG\Bishop-white.png" />
+    <None Remove="Images\ChessPieces\PNG\King-black.png" />
+    <None Remove="Images\ChessPieces\PNG\King-white.png" />
+    <None Remove="Images\ChessPieces\PNG\Knight-black.png" />
+    <None Remove="Images\ChessPieces\PNG\Knight-white.png" />
+    <None Remove="Images\ChessPieces\PNG\Pawn-black.png" />
+    <None Remove="Images\ChessPieces\PNG\Pawn-white.png" />
+    <None Remove="Images\ChessPieces\PNG\Queen-black.png" />
+    <None Remove="Images\ChessPieces\PNG\Queen-white.png" />
+    <None Remove="Images\ChessPieces\PNG\Rook-black.png" />
+    <None Remove="Images\ChessPieces\PNG\Rook-white.png" />
+    <None Remove="Images\ChessPieces\Source\Bishop.png" />
+    <None Remove="Images\ChessPieces\Source\King.png" />
+    <None Remove="Images\ChessPieces\Source\Knight-white.png" />
+    <None Remove="Images\ChessPieces\Source\Pawn-white.png" />
+    <None Remove="Images\ChessPieces\Source\Queen-white.png" />
+    <None Remove="Images\ChessPieces\Source\Rook.png" />
+    <None Remove="Images\ChessPieces\Source\Source.txt" />
+    <None Remove="Images\Source.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Chess.ViewModel\Chess.ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Chess.png" />
+    <Resource Include="Images\ChessPieces\PNG\Bishop-black.png" />
+    <Resource Include="Images\ChessPieces\PNG\Bishop-white.png" />
+    <Resource Include="Images\ChessPieces\PNG\King-black.png" />
+    <Resource Include="Images\ChessPieces\PNG\King-white.png" />
+    <Resource Include="Images\ChessPieces\PNG\Knight-black.png" />
+    <Resource Include="Images\ChessPieces\PNG\Knight-white.png" />
+    <Resource Include="Images\ChessPieces\PNG\Pawn-black.png" />
+    <Resource Include="Images\ChessPieces\PNG\Pawn-white.png" />
+    <Resource Include="Images\ChessPieces\PNG\Queen-black.png" />
+    <Resource Include="Images\ChessPieces\PNG\Queen-white.png" />
+    <Resource Include="Images\ChessPieces\PNG\Rook-black.png" />
+    <Resource Include="Images\ChessPieces\PNG\Rook-white.png" />
+    <Resource Include="Images\ChessPieces\Source\Bishop.png" />
+    <Resource Include="Images\ChessPieces\Source\King.png" />
+    <Resource Include="Images\ChessPieces\Source\Knight-white.png" />
+    <Resource Include="Images\ChessPieces\Source\Pawn-white.png" />
+    <Resource Include="Images\ChessPieces\Source\Queen-white.png" />
+    <Resource Include="Images\ChessPieces\Source\Rook.png" />
+    <Resource Include="Images\ChessPieces\Source\Source.txt" />
+    <Resource Include="Images\Source.txt" />
+  </ItemGroup>
+
+</Project>
