@@ -234,8 +234,8 @@ public partial class ChessGameVM : ObservableObject
             return;
 
         Player currentPlayer = targetChessPiece.ChessPiece.Player;
-        if ((ChessGame.Status == ChessGameStatus.BlackActive && currentPlayer == ChessGame.FirstPlayer)
-            || (ChessGame.Status == ChessGameStatus.WhiteActive && currentPlayer == ChessGame.SecondPlayer))
+        if ((ChessGame.Status == ChessGameStatus.BlackActive && currentPlayer == ChessGame.WhitePlayer)
+            || (ChessGame.Status == ChessGameStatus.WhiteActive && currentPlayer == ChessGame.BlackPlayer))
         {
             return;
         }

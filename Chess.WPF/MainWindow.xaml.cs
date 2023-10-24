@@ -26,22 +26,19 @@ public partial class MainWindow : Window
     /// <summary>
     /// Initialises a new instance of the <see cref="MainWindow"/> class.
     /// </summary>
-    public MainWindow()
-    {
-        InitializeComponent();
-    }
+    public MainWindow() => InitializeComponent();
 
     /// <summary>
     /// Gets or sets the <see cref="ViewModel.ChessGameVM"/>.
     /// </summary>
     /// <value>The <see cref="ViewModel.ChessGameVM"/>.</value>
-    public ChessGameVM ChessGameVM { get; set; }
+    public ChessGameVM? ChessGameVM { get; set; }
 
     /// <summary>
     /// Gets or sets the <see cref="ViewModel.ChessBoardVM"/>.
     /// </summary>
     /// <value>The <see cref="ViewModel.ChessBoardVM"/>.</value>
-    public ChessBoardVM ChessBoardVM { get; set; }
+    public ChessBoardVM? ChessBoardVM { get; set; }
 
     /// <summary>
     /// Used to select the corresponding <see cref="Field"/>.
@@ -52,9 +49,9 @@ public partial class MainWindow : Window
     {
         Point point = e.GetPosition((Canvas)sender);
         double left = Math.Floor(point.X);
-        double top = Math.Floor(Convert.ToDouble(this.ChessBoardVM.Height) - point.Y);
+        double top = Math.Floor(Convert.ToDouble(ChessBoardVM.Height) - point.Y);
 
-        this.ChessGameVM.SelectField(left, top);
+        ChessGameVM.SelectField(left, top);
     }
 
     /// <summary>
@@ -71,9 +68,9 @@ public partial class MainWindow : Window
         }*/
 
         // Can be extended by a logic to retrieve a new board size from the user.
-        ChessBoardParameters parameters = new(this.ChessBoardVM.Width, this.ChessBoardVM.Height);
+        ChessBoardParameters parameters = new(ChessBoardVM.Width, ChessBoardVM.Height);
         ChessGame game = new(parameters);
-        this.Initialise(game);
+        Initialise(game);
     }
 
     /// <summary>
@@ -87,7 +84,7 @@ public partial class MainWindow : Window
         Button reportingButton = e.Source as Button;
         ChessMove selectedMove = reportingButton.DataContext as ChessMove;
 
-        this.ChessGameVM.Rewind(selectedMove);
+        ChessGameVM.Rewind(selectedMove);
     }
 
     /// <summary>
@@ -115,7 +112,7 @@ public partial class MainWindow : Window
             return;
         }
 
-        if (this.ChessGameVM.ChessGame.Save(saveFileDialog.FileName))
+        if (ChessGameVM.ChessGame.Save(saveFileDialog.FileName))
         {
             MessageBox.Show("Successfully saved the game.");
         }
@@ -139,20 +136,19 @@ public partial class MainWindow : Window
 
         // Stop if the user cancels the dialog.
         if (openFileDialog.ShowDialog() == false)
-        {
             return;
-        }
 
         bool wasSuccessful = ChessGame.RetrieveSave(openFileDialog.FileName, out ChessGameSave chessGameSave);
 
         if (!wasSuccessful)
         {
             MessageBox.Show("Could not retrieve the chess game save from the specified file.");
+            
             return;
         }
 
         ChessGame chessGame = new(chessGameSave);
-        this.Initialise(chessGame);
+        Initialise(chessGame);
         chessGame.Load(chessGameSave);
     }
 
@@ -163,12 +159,12 @@ public partial class MainWindow : Window
     /// <param name="chessGame">The <see cref="ChessGame"/> that gets set up.</param>
     private void Initialise(ChessGame chessGame)
     {
-        this.ChessGameVM = new ChessGameVM(chessGame);
-        this.ChessBoardVM = this.ChessGameVM.ChessBoardVM;
-        this.DataContext = this.ChessBoardVM;
-        this.gameStatusBorder.DataContext = this.ChessGameVM.Status;
-        this.beatenWhiteChessPieces.DataContext = this.ChessGameVM.BeatenWhiteChessPieces;
-        this.beatenBlackChessPieces.DataContext = this.ChessGameVM.BeatenBlackChessPieces;
-        this.moveList.DataContext = this.ChessGameVM.MoveList;
+        ChessGameVM = new ChessGameVM(chessGame);
+        ChessBoardVM = ChessGameVM.ChessBoardVM;
+        DataContext = ChessBoardVM;
+        gameStatusBorder.DataContext = ChessGameVM.Status;
+        beatenWhiteChessPieces.DataContext = ChessGameVM.BeatenWhiteChessPieces;
+        beatenBlackChessPieces.DataContext = ChessGameVM.BeatenBlackChessPieces;
+        moveList.DataContext = ChessGameVM.MoveList;
     }
 }

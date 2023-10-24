@@ -6,9 +6,9 @@
 // <summary>Contains the App class.</summary>
 //------------------------------------------------------------
 
-using System.Windows;
 using Chess.Model;
 using Chess.ViewModel;
+using System.Windows;
 
 namespace Chess.WPF;
 
@@ -27,9 +27,7 @@ public partial class App : Application
         ChessBoardParameters parameters = new(e.Args);
 
         if (!parameters.WasSuccessful)
-        {
             MessageBox.Show("Required format: -size WIDTHxHEIGHT\n\nStarting application with default parameters.", "Invalid command line arguments!");
-        }
 
         ChessGame game = new(parameters);
         ChessGameVM gameVM = new(game);

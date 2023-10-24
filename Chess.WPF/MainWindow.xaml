@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chess.WPF"
         xmlns:converter="clr-namespace:Chess.WPF.Converter"
+        xmlns:viewmodel="clr-namespace:Chess.ViewModel;assembly=Chess.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ChessGameStatusVM}"
         Title="Chess © 2023 Benjamin BOGNER" Height="800" Width="1050" MinHeight="400" MinWidth="400"
         WindowStartupLocation="CenterScreen" ScrollViewer.VerticalScrollBarVisibility="Disabled"
         Icon=".\Images\Chess.png"

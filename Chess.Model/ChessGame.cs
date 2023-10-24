@@ -52,8 +52,8 @@ public class ChessGame
     {
         Board = new ChessBoard(parameters);
         _ruleBook = new RuleBook(Board);
-        FirstPlayer = new Player(Direction.North);
-        SecondPlayer = new Player(Direction.South);
+        BlackPlayer = new Player(Direction.North);
+        WhitePlayer = new Player(Direction.South);
         Status = ChessGameStatus.BlackActive;
 
         InitialiseChessPieces();
@@ -68,8 +68,8 @@ public class ChessGame
         ChessBoardParameters parameters = new(chessGameSave.Width, chessGameSave.Height);
         Board = new ChessBoard(parameters);
         _ruleBook = new RuleBook(Board);
-        FirstPlayer = new Player(Direction.North);
-        SecondPlayer = new Player(Direction.South);
+        BlackPlayer = new Player(Direction.North);
+        WhitePlayer = new Player(Direction.South);
         Status = ChessGameStatus.BlackActive;
 
         InitialiseChessPieces();
@@ -126,13 +126,13 @@ public class ChessGame
     /// Gets the first <see cref="Player"/> of this <see cref="ChessGame"/>.
     /// </summary>
     /// <value>The first <see cref="Player"/> of this <see cref="ChessGame"/>.</value>
-    public Player FirstPlayer { get; init; }
+    public Player BlackPlayer { get; init; }
 
     /// <summary>
     /// Gets the second <see cref="Player"/> of this <see cref="ChessGame"/>.
     /// </summary>
     /// <value>The second <see cref="Player"/> of this <see cref="ChessGame"/>.</value>
-    public Player SecondPlayer { get; init; }
+    public Player WhitePlayer { get; init; }
 
     /// <summary>
     /// Gets the <see cref="ChessBoard"/> of this <see cref="ChessGame"/>.
@@ -323,7 +323,7 @@ public class ChessGame
         KingsRetriever kingsRetriever = new();
         Board.OccupiedFields.Values.ToList().ForEach(x => x.Accept(kingsRetriever));
 
-        King? blackKing = kingsRetriever.Kings.FirstOrDefault(x => x.Player == FirstPlayer);
+        King? blackKing = kingsRetriever.Kings.FirstOrDefault(x => x.Player == BlackPlayer);
 
         if (blackKing is null)
         {
@@ -336,7 +336,7 @@ public class ChessGame
         }
 
         Field fieldOfBlackKing = Board.OccupiedFields.FirstOrDefault(x => x.Value == blackKing).Key;
-        King? whiteKing = kingsRetriever.Kings.FirstOrDefault(x => x.Player == SecondPlayer);
+        King? whiteKing = kingsRetriever.Kings.FirstOrDefault(x => x.Player == WhitePlayer);
 
         if (whiteKing == null)
         {
@@ -364,7 +364,7 @@ public class ChessGame
     /// <param name="fieldOfBlackKing">The <see cref="Field"/> of the black <see cref="King"/>.</param>
     private void EvaluateAllWhiteTurns(King blackKing, Field fieldOfBlackKing)
     {
-        List<Field> allWhiteMoves = GetAllMovesFromPlayer(SecondPlayer);
+        List<Field> allWhiteMoves = GetAllMovesFromPlayer(WhitePlayer);
 
         bool isBlackKingCurrentlyInDanger = allWhiteMoves.Contains(fieldOfBlackKing);
         if (isBlackKingCurrentlyInDanger != _blackKingInDanger)
@@ -394,7 +394,7 @@ public class ChessGame
     /// <param name="fieldOfWhiteKing">The <see cref="Field"/> of the white <see cref="King"/>.</param>
     private void EvaluateAllBlackTurns(King whiteKing, Field fieldOfWhiteKing)
     {
-        var allBlackMoves = this.GetAllMovesFromPlayer(FirstPlayer);
+        var allBlackMoves = this.GetAllMovesFromPlayer(BlackPlayer);
         
         bool isWhiteKingCurrentlyInDanger = allBlackMoves.Contains(fieldOfWhiteKing);
         if (isWhiteKingCurrentlyInDanger != _whiteKingInDanger)
@@ -469,7 +469,7 @@ public class ChessGame
     /// </summary>
     private void InitialiseChessPieces()
     {
-        List<ChessPiece> firstSetOfChessPieces = GenerateSetOfChessPieces(FirstPlayer);
+        List<ChessPiece> firstSetOfChessPieces = GenerateSetOfChessPieces(BlackPlayer);
 
         // Place the first row.
         for (int i = 0; i < 8; i++)
@@ -479,7 +479,7 @@ public class ChessGame
         for (int i = 0; i < 8; i++)
             Board.Place(firstSetOfChessPieces[i + 8], new Field(i, 1));
 
-        List<ChessPiece> secondSetOfChessPieces = GenerateSetOfChessPieces(SecondPlayer);
+        List<ChessPiece> secondSetOfChessPieces = GenerateSetOfChessPieces(WhitePlayer);
 
         // Place the first row.
         for (int i = 0; i < 8; i++)
